@@ -1,0 +1,28 @@
+To create anisible.cfg and host
+
+[ec2-user@ip-172-31-16-75 ~]$ sudo nano /etc/ansible/ansible.cfg
+[defaults]
+inventory = /etc/ansible/hosts
+remote_user = root
+host_key_checking = False
+retry_files_enabled = False
+~
+
+
+[ec2-user@ip-172-31-16-75 ~]$ sudo nano /etc/ansible/hosts
+
+
+
+
+If httpd failed to connect 
+
+ ps aux | grep httpd
+if you get more result with httpd
+
+We need to kill them
+ sudo kill -9 28308 28309 28310 28311 28312
+
+
+
+
+https://www.youtube.com/watch?v=AmSjHMZL4OY

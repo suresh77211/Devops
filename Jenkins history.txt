@@ -1,0 +1,79 @@
+       [root@ip-172-31-46-152 ec2-user]# history
+    1  sudo amazon-linux-extras install java-openjdk11 -y
+    2  yum install -y git
+    3  sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+    4  sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+    5  sudo yum install -y apache-maven
+    6  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    7  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    8   sudo amazon-linux-extras install epel -y
+    9  yum install jenkins -y  or if not work with error rpm not install sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io-2023.key ->sudo yum clean all->sudo yum clean all
+   10  jenkins --version
+   11  mvn --version
+   12  git --version
+   13  java -version
+   14  service jenkins start
+   15  cat /var/lib/jenkins/secrets/initialAdminPassword
+   16  java -version
+   17  javac -version
+   18  update-alternatives --config java
+   19  mvn --version
+   20  update-alternatives --config javac
+   21  update-alternatives --config java
+   22  update-alternatives --config java
+
+
+*to change the version of java sudo alternatives --config java
+
+sudo dnf install java-17-amazon-corretto -y
+yum install -y git
+sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+sudo yum install -y apache-maven
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+yum install jenkins -y
+
+If not able to connect jenkins we need to change the version
+
+*to change the version of java sudo alternatives --config java
+
+Clean up stale Jenkins PID file (if it exists):
+sudo rm -f /var/run/jenkins/jenkins.pid
+
+Start Jenkins again:
+sudo systemctl daemon-reexec
+sudo systemctl restart jenkins
+Check status:
+sudo systemctl status jenkins
+
+
+
+If memory of the node is high perform the below action
+You can safely delete old temp files that aren’t in use:
+sudo rm -rf /tmp/*
+Or more conservatively, delete only files older than a day:
+sudo find /tmp -type f -mtime +1 -exec rm -f {} \;
+Then check space again:
+df -h /tmp
+increase the memory
+sudo mount -o remount,size=2G /tmp
+
+df -h /tmp
+sudo systemctl restart jenkins
+
+
+Important 
+https://github.com/miztiik/DevOps-Demos/tree/master/setup-jenkins-slave
+
+https://www.youtube.com/watch?v=hwrYURP4O2k
+
+
+
+
+To change the server name
+[root@ip-172-31-86-14 ec2-user]# hostnamectl set-hostname nexus
+[root@ip-172-31-86-14 ec2-user]# exec bash
+
+
+

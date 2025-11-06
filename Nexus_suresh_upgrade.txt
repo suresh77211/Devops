@@ -1,0 +1,44 @@
+install java 
+sudo yum install java-1.8.0-amazon-corretto
+
+if want change java 
+sudo alternatives --config java
+
+
+change directory as this is third party application
+
+cd /opt
+sudo wget https://download.sonatype.com/nexus/3/nexus-3.68.1-02-java8-unix.tar.gz
+
+sudo tar -xvzf nexus-3.68.1-02-java8-unix.tar.gz
+sudo mv nexus-3.68.1-02 nexus3
+
+change the owner ship for nexus3 and sonar work to ec2-user:ec2-user
+
+chown -R ec2-user:ec2-user nexus3 sonatype-work/
+
+cd nexus3/
+
+cd bin/
+ ls
+vi nexus.rc
+
+Now create a soft link 
+ln -s /opt/nexus3/bin/nexus /etc/init.d/nexus
+
+check if this softling generated or not
+cd /etc/init.d
+
+we need to change application as service 
+ chkconfig --add nexus
+
+chkconfig nexus on
+
+start nexus
+sudo service nexus start
+
+
+
+**** How to change nexus port number
+vi /opt/nexus/bin/etc/nexus-default.properties
+

@@ -1,0 +1,106 @@
+[root@ip-172-31-38-63 conf]# history
+    1  yum install -y java-1.8.0-openjdk-devel.x86_64
+
+
+    2  sudo wget -O /etc/yum.repos.d/sonar.repo http://downloads.sourceforge.net/project/sonar-pkg/rpm/sonar.repo
+    3  ls
+    4  sudo yum install sonar -y
+    5  service sonar start
+
+
+    6  cd /
+    7  ls
+    8  cd opt/
+    9  ls
+   10  cd sonar/
+   11  ls
+   12  cd conf/
+   13  ls
+   14  vi sonar.properties
+   15  service sonar stop
+   16  service sonar start
+   17  history
+[root@ip-172-31-38-63 conf]#
+
+
+prasad: e6b2a667db6ed40a5f3468b6699d9674437b620a
+
+
+prashu: e81ff17f9753d6f6d91db034a4ef0abd2cffdc7d
+
+
+ramu: 22608e97b4ed92f651828c05b072048254c1af4a
+
+
+rajasekahar: bc5cac6fd7250fed93469f76384333ff869214cc
+
+hari: 78d284ce6ed1f61862f557a4310606be735117ac
+
+
+
+https://www.youtube.com/watch?v=3vOnAftKKnw
+
+
+
+Step-by-Step SonarQube Installation
+Step 1: Update your system
+bash
+Copy
+Edit
+sudo yum update -y
+Step 2: Install dependencies
+sudo yum install java-17-amazon-corretto wget unzip -y
+Ensure Java 17 is installed:
+
+bash
+Copy
+Edit
+java -version
+
+Step 3: Create a non-root user
+SonarQube won't run as root. Create a user:
+sudo adduser sonar
+sudo passwd sonar
+Give it permission on the install directory:
+
+
+sudo mkdir /opt/sonarqube
+sudo chown -R sonar:sonar /opt/sonarqube
+
+Step 4: Download and extract SonarQube
+(As ec2-user or sonar user)
+
+cd /opt/sonarqube
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.3.0.82913.zip
+sudo unzip sonarqube-10.3.0.82913.zip
+sudo mv sonarqube-10.3.0.82913 sonarqube
+sudo chown -R sonar:sonar /opt/sonarqube
+
+
+Step 5: Run SonarQube manually (first test)
+Switch to the sonar user:
+
+
+sudo su - sonar
+cd /opt/sonarqube/sonarqube/bin/linux-x86-64
+./sonar.sh start
+Wait 30 seconds, then check:
+
+
+tail -f /opt/sonarqube/sonarqube/logs/sonar.log
+Step 6: Access SonarQube
+Open your browser and go to:
+
+
+http://<your-ec2-public-ip>:9000
+
+
+
+squ_cff90063d11e81c46a6d7f833e6db256ce2eb8f3 (31-05-2025
+
+squ_f89a7e3e55cbb77e08f79f264c6be38feef662f5 (02-06-2025)
+
+
+
+
+

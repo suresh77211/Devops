@@ -1,0 +1,52 @@
+manam install chesina docker complete information telusukovali ante 
+Docker info
+
+* docker is an client server achitechure
+
+**What is the default docker home direcory
+/var/lib/docker
+
+edana image ni pull chesukovali online lo ante
+docker pull nginx
+
+How to create the container 
+docker run -itd --name suresh -p 40:80 Image id
+
+How to create the tag
+docker tag ngiix:latest suresh772111/dev:jenkins
+
+How to push the tag into repository 
+docker push suresh772111/dev:jenkins
+
+How to check the container
+docker inspect containername/container id
+
+How to stop container
+docker stop containername
+
+How to remove container
+docker rm containername
+
+How to remove image 
+docker rmi -f imageid
+
+How to login to the container 
+docker exec -it containername /bin/bash
+
+How to create volume 
+docker volume create myvol
+
+How to check volume 
+docker volume ls
+
+How to create a container with volum
+docker run -itd --name containername -p 90:8080 -v1 myvol1:/myapp alpine
+
+How to check the network 
+docker network ls 
+
+How to create our own network
+docker network create --driver bridge javahome(volume name)
+
+How to create container under the network
+docker run itd --name s1 -p 90:8080 --network javahome alpine
